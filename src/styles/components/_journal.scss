@@ -4,7 +4,7 @@
 
 .journal__sidebar {
   background-color: $dark-grey;
-  color: white;
+  color: $white;
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -29,12 +29,11 @@
   flex-direction: column;
   justify-content: center;
   margin-top: 30px;
+  transition: 3s ease;
   width: 100%;
 
-  transition: 3s ease;
-
   &:hover {
-    color: darken($color: white, $amount: 20);
+    color: darken($color: $white, $amount: 20);
   }
 }
 
@@ -45,7 +44,7 @@
 }
 
 .journal__entry {
-  background-color: white;
+  background-color: $white;
   border-radius: 4px;
   color: $dark-grey;
   display: flex;

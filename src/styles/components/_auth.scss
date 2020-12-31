@@ -2,14 +2,14 @@
   align-items: center;
   background-color: $primary;
   display: flex;
-  justify-content: center;
   height: 100vh;
+  justify-content: center;
   margin: 0;
   width: 100vw;
 }
 
 .auth__box-container {
-  background-color: white;
+  background-color: $white;
   border-radius: 2px;
   box-shadow: 0 3px $dark-grey;
   padding: 20px;
@@ -22,15 +22,14 @@
 }
 
 .auth__input {
-  border: 0;
   border-bottom: 1px solid $light-grey;
+  border: 0;
   color: $dark-grey;
   font-size: 16px;
   height: 20px;
   margin-bottom: 10px;
-  width: 100%;
-
   transition: border-bottom 0.3s ease;
+  width: 100%;
 
   &:focus {
     border-bottom: 1px solid $primary;
@@ -49,9 +48,9 @@
 }
 
 .auth__alert-error {
-  background-color: red;
+  background-color: $error;
   border-radius: 5px;
-  color: white;
+  color: $white;
   display: flex;
   justify-content: center;
   margin-bottom: 10px;
