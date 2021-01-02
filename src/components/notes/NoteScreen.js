@@ -49,13 +49,12 @@ export const NoteScreen = () => {
 
         {note.url && (
           <div className="notes__image">
-            <img
-              src="https://learn.zoner.com/wp-content/uploads/2018/08/landscape-photography-at-every-hour-part-ii-photographing-landscapes-in-rain-or-shine.jpg"
-              alt="landscape"
-            />
+            <img src={note.url} alt="image" />
           </div>
         )}
       </div>
+
+      <button className="btn btn-danger">Delete</button>
     </div>
   );
 };
