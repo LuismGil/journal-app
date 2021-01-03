@@ -18,6 +18,10 @@ jspm_packages/
 .env.development.local
 .env.test.local
 .env.production.local
+.env.test
+.env.development
+
+
 
 yarn*
 
