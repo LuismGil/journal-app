@@ -20,6 +20,7 @@ jspm_packages/
 .env.production.local
 .env.test
 .env.development
+.env.production
 
 
 
