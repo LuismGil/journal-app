@@ -45,7 +45,7 @@ export const AppRouter = () => {
   }
 
   return (
-    <Router basename="/journal-app/">
+    <Router>
       <div>
         <Switch>
           <PublicRoute
@@ -56,7 +56,7 @@ export const AppRouter = () => {
           <PrivateRoute
             exact
             isAuthenticated={isLoggedIn}
-            path="/"
+            path="/journal-app/"
             component={JournalScreen}
           />
 
