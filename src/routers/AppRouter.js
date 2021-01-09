@@ -56,7 +56,7 @@ export const AppRouter = () => {
           <PrivateRoute
             exact
             isAuthenticated={isLoggedIn}
-            path="/journal-app/"
+            path="/"
             component={JournalScreen}
           />
 
