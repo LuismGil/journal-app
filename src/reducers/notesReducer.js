@@ -33,6 +33,10 @@ export const notesReducer = (state = initialState, action) => {
         notes: state.notes.map(note =>
           note.id === action.payload.id ? action.payload.note : note
         ),
+        active: {
+          ...state.active,
+          updated: true,
+        },
       };
 
     case types.notesDelete:

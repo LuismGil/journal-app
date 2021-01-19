@@ -20,8 +20,10 @@ export const NoteScreen = () => {
     }
   }, [note, reset]);
 
+  console.log('formValues', formValues);
+
   useEffect(() => {
-    dispatch(activeNote(formValues.id, { ...formValues }));
+    dispatch(activeNote(formValues.id, formValues.idDos, formValues));
   }, [formValues, dispatch]);
 
   const handleDelete = () => {
