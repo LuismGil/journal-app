@@ -3,13 +3,20 @@ import moment from 'moment';
 import { activeNote } from '../../actions/notes';
 import { useDispatch } from 'react-redux';
 
-export const JournalEntry = ({ id, date, title, body, url }) => {
+export const JournalEntry = ({ id, idDos, date, title, body, url }) => {
   const dispatch = useDispatch();
 
   const noteDate = moment(date);
 
+  const customNote = {
+    date,
+    title,
+    body,
+    url,
+  };
+
   const handleEntryClick = () => {
-    dispatch(activeNote(id, { date, title, body, url }));
+    dispatch(activeNote(id, idDos, customNote));
   };
 
   return (

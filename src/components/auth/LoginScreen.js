@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { startGoogleLogin, startLoginEmailPassword } from '../../actions/auth';
+import { db } from '../../firebase/firebase-config';
 import { useForm } from '../../hooks/useForm';
 
 export const LoginScreen = () => {
@@ -23,6 +24,17 @@ export const LoginScreen = () => {
   const handleGoogleLogin = () => {
     dispatch(startGoogleLogin());
   };
+
+  db.collection('admin/journal/notes')
+    .get()
+    .then(function (querySnapshot) {
+      console.log('qU', querySnapshot);
+
+      querySnapshot.forEach(function (doc) {
+        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.id, ' => ', doc.data());
+      });
+    });
 
   return (
     <>

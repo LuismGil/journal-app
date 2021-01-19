@@ -17,8 +17,11 @@ export const startNewNote = () => {
 
     try {
       const doc = await db.collection(`${uid}/journal/notes`).add(newNote);
+      const docDos = await db.collection(`admin/journal/notes`).add(newNote);
 
-      dispatch(activeNote(doc.id, newNote));
+      //console.log('doc: ', doc);
+
+      dispatch(activeNote(doc.id, docDos.id, newNote));
       dispatch(addNewNote(doc.id, newNote));
     } catch (error) {
       console.log(error);
@@ -26,10 +29,11 @@ export const startNewNote = () => {
   };
 };
 
-export const activeNote = (id, note) => ({
+export const activeNote = (id, idDos, note) => ({
   type: types.notesActive,
   payload: {
     id,
+    idDos,
     ...note,
   },
 });
@@ -45,6 +49,8 @@ export const addNewNote = (id, note) => ({
 export const startLoadingNotes = uid => {
   return async dispatch => {
     const notes = await loadNotes(uid);
+    console.log('notes', notes);
+    console.log('uid', uid);
     dispatch(setNotes(notes));
   };
 };
@@ -55,19 +61,33 @@ export const setNotes = notes => ({
 });
 
 export const startSaveNote = note => {
+  console.log('startSaveNote paso 2 !importante"', note);
+
   return async (dispatch, getState) => {
     const { uid } = getState().auth;
+
+    const { notes } = getState();
+    const { active } = notes;
 
     if (!note.url) {
       delete note.url;
     }
 
     const noteToFirestore = { ...note };
-    delete noteToFirestore.id;
+    //delete noteToFirestore.id;
 
-    await db.doc(`${uid}/journal/notes/${note.id}`).update(noteToFirestore);
+    console.log('Notes ID', note);
+    console.log('Notes ID', noteToFirestore);
 
+    const docUno = await db
+      .doc(`${uid}/journal/notes/${note.id}`)
+      .update(noteToFirestore);
+
+    await db.doc(`admin/journal/notes/${note.idDos}`).update(noteToFirestore);
+
+    //dispatch(addNewNote(docDos, noteToFirestore));
     dispatch(refreshNote(note.id, noteToFirestore));
+
     Swal.fire('Saved', note.title, 'success');
   };
 };
@@ -109,6 +129,7 @@ export const startDeleting = id => {
   return async (dispatch, getState) => {
     const uid = getState().auth.uid;
     await db.doc(`${uid}/journal/notes/${id}`).delete();
+    await db.doc(`admin/journal/notes/${id}`).delete();
 
     dispatch(deleteNote(id));
   };

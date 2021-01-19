@@ -5,6 +5,8 @@ import { JournalEntry } from './JournalEntry';
 export const JournalEntries = () => {
   const { notes } = useSelector(state => state.notes);
 
+  console.log('Journal ENtries', notes);
+
   return (
     <div className="journal__entries">
       {notes.map(note => (
