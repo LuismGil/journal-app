@@ -1,6 +1,6 @@
 {
   "name": "journal-app",
-  "homepage": "https://luismgil.github.io/journal-app",
+  "homepage": ".",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
