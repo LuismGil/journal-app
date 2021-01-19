@@ -14,7 +14,7 @@ export const PrivateRoute = ({
         isAuthenticated ? (
           <Component {...props} />
         ) : (
-          <Redirect to="/journal-app/auth/login" />
+          <Redirect to="/auth/login" />
         )
       }
     />
