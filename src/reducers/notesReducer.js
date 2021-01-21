@@ -50,7 +50,7 @@ export const notesReducer = (state = initialState, action) => {
       return {
         ...state,
         active: null,
-        note: [],
+        notes: [],
       };
 
     default:
