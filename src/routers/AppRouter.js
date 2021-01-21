@@ -45,7 +45,7 @@ export const AppRouter = () => {
   }
 
   return (
-    <Router basename="/journal-app">
+    <Router>
       <div>
         <Switch>
           <PublicRoute
