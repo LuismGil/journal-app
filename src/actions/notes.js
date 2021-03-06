@@ -11,6 +11,7 @@ export const startNewNote = () => {
 
     const newNote = {
       title: '',
+      slug: '',
       body: '',
       date: new Date().getTime(),
     };
